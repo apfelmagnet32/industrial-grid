@@ -1,0 +1,77 @@
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+base {
+    archivesName = project.mod_id
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+minecraft {
+    mappings channel: 'official', version: project.minecraft_version
+
+    runs {
+        client {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                industrialgrid {
+                    source sourceSets.main
+                }
+            }
+        }
+        server {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                industrialgrid {
+                    source sourceSets.main
+                }
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    flatDir { dirs 'libs' }
+}
+
+dependencies {
+    minecraft "net.minecraftforge:forge:${project.minecraft_version}-${project.forge_version}"
+
+    // Power Grid - only needed to compile against its WireItem API. Not
+    // bundled - the player must have Create + Power Grid installed themselves.
+    compileOnly files('libs/powergrid-mc1.20.1-0.6.1.jar')
+
+    // Create/Flywheel/Ponder jars are SRG-named (not remapped to official
+    // mappings like Power Grid's), so they need ForgeGradle's deobfuscation
+    // to line up with our mojmap-compiled source. Resolved through the
+    // flatDir repo above by matching [name]-[version].jar in libs/.
+    // Compile-time only, not bundled.
+    compileOnly fg.deobf('blank:create-1.20.1:6.0.8')
+    compileOnly fg.deobf('blank:flywheel-forge-1.20.1:1.0.5')
+    compileOnly fg.deobf('blank:Ponder-Forge-1.20.1:1.0.91')
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+        minecraft_version: project.minecraft_version,
+        forge_version: project.forge_version,
+        mod_version: project.mod_version,
+        mod_id: project.mod_id
+    ]
+    inputs.properties replaceProperties
+    filesMatching('META-INF/mods.toml') {
+        expand replaceProperties
+    }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "III",
+    "IWI",
+    "III"
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:netherite_scrap"
+    },
+    "W": {
+      "item": "powergrid:iron_wire"
+    }
+  },
+  "result": {
+    "id": "industrial-grid:industrial_cable",
+    "count": 1
+  }
+}
