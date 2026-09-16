@@ -1,68 +1,67 @@
 # Industrial Grid
 
-Ein kleiner Addon-Mod für [Create: Power Grid](https://github.com/patryk3211/PowerGrid),
-der ein neues Kabel hinzufügt: das **Industrial Cable** — ein Panzerkabel mit
-Hochspannungs-Warnstreifen-Design, das praktisch nicht überlasten/durchbrennen
-kann.
+A small addon mod for [Create: Power Grid](https://github.com/patryk3211/PowerGrid)
+that adds a new cable: the **Industrial Cable** — an armored cable with a
+high-voltage hazard-stripe design that practically never overloads/burns out.
 
-Zwei Varianten, je nach Minecraft-Version:
+Two variants, depending on Minecraft version:
 
-| Ordner | Minecraft | Loader | Power Grid Version |
+| Folder | Minecraft | Loader | Power Grid Version |
 |---|---|---|---|
 | `neoforge-1.21.1/` | 1.21.1 | NeoForge | 0.6.1 |
 | `forge-1.20.1/` | 1.20.1 | Forge | 0.6.1 |
 
-Beides sind eigenständige Gradle-Projekte.
+Both are standalone Gradle projects.
 
-## Wie das "unzerstörbar" funktioniert
+## How the "indestructible" behavior works
 
-Power Grid registriert Kabel rein datenbasiert über die `wire_types`-Registry
-(`data/<mod>/powergrid/wire_types/<item>.json`) — jedes Item mit so einem
-Eintrag wird automatisch als Kabel erkannt, ganz ohne Java-Hacks in Power Grid
-selbst. Unser Eintrag setzt `thermalMass` und `maximumCurrent` auf extrem
-hohe Werte, wodurch das Kabel bei jeder realistischen Stromlast praktisch nie
-die Überhitzungs-Temperatur erreicht — genau der Mechanismus, über den normale
-Power-Grid-Kabel im Spiel tatsächlich "kaputt gehen" (durchbrennen).
+Power Grid registers cables purely through data, via the `wire_types`
+registry (`data/<mod>/powergrid/wire_types/<item>.json`) — any item with
+such an entry is automatically recognized as a cable, with no Java hacks in
+Power Grid itself. Our entry sets `thermalMass` and `maximumCurrent` to
+extremely high values, so the cable practically never reaches the overheat
+temperature under any realistic current load — exactly the mechanism
+through which normal Power Grid cables actually "burn out" in-game.
 
-**Einschränkung:** Das Kabel wird trotzdem physisch entfernt, wenn ein
-Spieler es absichtlich mit der Drahtschere durchschneidet (das ist eine
-Spieleraktion, kein "Kaputtgehen"), und es ist nicht explosionsimmun wie
-Bedrock — das würde einen Mixin-Eingriff direkt in Power Grids `WireEntity`
-erfordern, was pro Minecraft-Version sehr wartungsintensiv und riskant wäre.
-Was der Mod löst: das Kabel überlastet/verbrennt nie durch zu hohen Strom,
-egal wie viel Energie durchfließt.
+**Limitation:** the cable can still be physically removed if a player
+deliberately cuts it with wire cutters (that's a player action, not
+"burning out"), and it is not explosion-immune like Bedrock — that would
+require a Mixin directly into Power Grid's `WireEntity`, which would be
+high-maintenance and risky across Minecraft versions. What the mod does
+solve: the cable never overloads/burns out from excessive current, no
+matter how much energy flows through it.
 
-## Rezept
+## Recipe
 
 ```
-[Netherite-Schrott] [Netherite-Schrott] [Netherite-Schrott]
-[Netherite-Schrott] [Power Grid Eisendraht] [Netherite-Schrott]
-[Netherite-Schrott] [Netherite-Schrott] [Netherite-Schrott]
+[Netherite Scrap] [Netherite Scrap] [Netherite Scrap]
+[Netherite Scrap] [Power Grid Iron Wire] [Netherite Scrap]
+[Netherite Scrap] [Netherite Scrap] [Netherite Scrap]
 ```
 → 1x Industrial Cable
 
-## Bauen
+## Building
 
-Jedes Unterprojekt braucht das jeweilige Power-Grid-Jar (liegt schon unter
-`libs/` im Projekt) nur zum Kompilieren — es wird nicht mitgebündelt. Create
-und Power Grid müssen beim Spielen selbst installiert sein.
+Each subproject needs the respective Power Grid jar (already included
+under `libs/` in the project) only to compile against — it is not bundled.
+Create and Power Grid must be installed separately to actually play.
 
 ```
 cd neoforge-1.21.1 && ./gradlew build
-# bzw.
+# or
 cd forge-1.20.1 && ./gradlew build
 ```
 
-Das fertige Jar landet in `build/libs/`.
+The finished jar lands in `build/libs/`.
 
-## Lizenz-Hinweis
+## License notice
 
-Dieser Mod steht unter der eigenen **Use-Restriction-License (URL)** (siehe
-[`LICENSE`](LICENSE)) — Nutzung/Weitergabe/Content mit sichtbarem Link zur
-offiziellen Seite erlaubt, keine Ownership-Claims, keine Redistribution ohne
-Link.
+This mod is under its own **Use-Restriction-License (URL)** (see
+[`LICENSE`](LICENSE)) — use/redistribution/content with a visible link to
+the official page is permitted, no ownership claims, no redistribution
+without a link.
 
-Er verwendet keinen Quellcode aus Power Grid, referenziert aber dessen
-öffentliche `WireItem`-API und das Datapack-Format `wire_types` (Power Grid
-steht unter Apache License 2.0). Power Grid selbst wird nicht mitgeliefert
-und muss separat installiert werden.
+It does not use any source code from Power Grid, but does reference its
+public `WireItem` API and the `wire_types` data-pack format (Power Grid is
+licensed under Apache License 2.0). Power Grid itself is not bundled and
+must be installed separately.
