@@ -1,0 +1,20 @@
+{
+  "item.industrialgrid.industrial_cable": "Unzerstörbares Kabel",
+  "itemGroup.industrialgrid": "Unzerstörbares Kabel",
+
+  "block.industrialgrid.high_voltage_gauge": "Hochspannungs-Messgerät",
+  "block.industrialgrid.high_current_gauge": "Hochstrom-Messgerät",
+  "block.industrialgrid.high_power_gauge": "Hochleistungs-Messgerät",
+  "block.industrialgrid.industrial_breaker": "Industrial Breaker",
+  "block.industrialgrid.industrial_hv_switch": "Industrial HV Switch",
+
+  "industrialgrid.devices.gauge.high_voltage": "Bereich",
+  "industrialgrid.devices.gauge.high_current": "Bereich",
+  "industrialgrid.devices.gauge.high_power": "Bereich",
+
+  "industrialgrid.devices.industrial_breaker.setting": "Auslösestrom",
+  "industrialgrid.devices.industrial_breaker.status": "Status",
+  "industrialgrid.devices.industrial_breaker.closed": "Geschlossen",
+  "industrialgrid.devices.industrial_breaker.open": "Offen",
+  "industrialgrid.devices.industrial_breaker.charged": "Geladen"
+}

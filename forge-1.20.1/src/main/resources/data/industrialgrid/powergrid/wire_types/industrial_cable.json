@@ -1,0 +1,14 @@
+{
+  "colorable": false,
+  "cord": false,
+  "horizontalCoefficient": 1.001,
+  "insulated": true,
+  "itemsPerMeter": 0.5,
+  "maximumCurrent": 1000000000000.0,
+  "maximumLength": 64.0,
+  "resistancePerItem": 0.00001,
+  "texture": "industrialgrid:textures/special/industrial_wire.png",
+  "thermalMass": 1000000000000.0,
+  "verticalCoefficient": 1.01,
+  "wireThickness": 0.1875
+}

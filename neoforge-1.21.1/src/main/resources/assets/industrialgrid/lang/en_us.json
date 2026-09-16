@@ -1,0 +1,20 @@
+{
+  "item.industrialgrid.industrial_cable": "Industrial Cable",
+  "itemGroup.industrialgrid": "Industrial Cable",
+
+  "block.industrialgrid.high_voltage_gauge": "High-Voltage Gauge",
+  "block.industrialgrid.high_current_gauge": "High-Current Gauge",
+  "block.industrialgrid.high_power_gauge": "High-Power Gauge",
+  "block.industrialgrid.industrial_breaker": "Industrial Breaker",
+  "block.industrialgrid.industrial_hv_switch": "Industrial HV Switch",
+
+  "industrialgrid.devices.gauge.high_voltage": "Range",
+  "industrialgrid.devices.gauge.high_current": "Range",
+  "industrialgrid.devices.gauge.high_power": "Range",
+
+  "industrialgrid.devices.industrial_breaker.setting": "Trip Current",
+  "industrialgrid.devices.industrial_breaker.status": "Status",
+  "industrialgrid.devices.industrial_breaker.closed": "Closed",
+  "industrialgrid.devices.industrial_breaker.open": "Open",
+  "industrialgrid.devices.industrial_breaker.charged": "Charged"
+}
