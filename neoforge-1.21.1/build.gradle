@@ -1,0 +1,62 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.78'
+}
+
+version = project.mod_version
+group = project.mod_group_id
+
+base {
+    archivesName = project.mod_id
+}
+
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+repositories {
+    mavenCentral()
+    flatDir { dirs 'libs' }
+}
+
+neoForge {
+    version = project.neoforge_version
+
+    runs {
+        client {
+            client()
+        }
+        server {
+            server()
+        }
+    }
+
+    mods {
+        register(project.mod_id) {
+            sourceSet sourceSets.main
+        }
+    }
+}
+
+dependencies {
+    // Create, Flywheel, Ponder (Create's own nested deps) and Power Grid -
+    // only needed to compile against their APIs. Not bundled - the player
+    // must have Create + Power Grid installed themselves.
+    compileOnly files(
+        'libs/powergrid-mc1.21.1-0.6.1.jar',
+        'libs/create-1.21.1-6.0.10.jar',
+        'libs/flywheel-neoforge-1.21.1-1.0.6.jar',
+        'libs/ponder-neoforge-1.0.82+mc1.21.1.jar'
+    )
+}
+
+tasks.withType(ProcessResources).configureEach {
+    var replaceProperties = [
+        minecraft_version: project.minecraft_version,
+        neo_version: project.neoforge_version,
+        mod_version: project.mod_version,
+        mod_id: project.mod_id
+    ]
+    inputs.properties replaceProperties
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand replaceProperties
+    }
+}

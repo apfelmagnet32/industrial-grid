@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "Use-Restriction-License (URL)"
+issueTrackerURL = "https://github.com/apfelmagnet32/invincible-cable/issues"
+
+[[mods]]
+modId = "${mod_id}"
+version = "${mod_version}"
+displayName = "Industrial Grid"
+description = '''Adds an indestructible Create: Power Grid wire that never burns out from overload, plus high-range voltage/current/power gauges.'''
+authors = "apfelmagnet32"
+
+[[dependencies.'${mod_id}']]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[${forge_version},)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.'${mod_id}']]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[${minecraft_version},)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.'${mod_id}']]
+    modId = "powergrid"
+    mandatory = true
+    versionRange = "[0.6.0,)"
+    ordering = "AFTER"
+    side = "BOTH"
+
+[[dependencies.'${mod_id}']]
+    modId = "create"
+    mandatory = true
+    versionRange = "[6.0.0,)"
+    ordering = "AFTER"
+    side = "BOTH"

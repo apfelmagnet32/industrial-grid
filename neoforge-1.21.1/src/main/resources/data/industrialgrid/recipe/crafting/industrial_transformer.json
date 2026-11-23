@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "powergrid:conductive_casing"
+    },
+    "I": {
+      "tag": "c:plates/iron"
+    },
+    "N": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "pattern": [
+    "IAI",
+    "ANA",
+    "IAI"
+  ],
+  "result": {
+    "count": 1,
+    "id": "industrialgrid:industrial_transformer"
+  }
+}
